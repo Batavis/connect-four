@@ -99,8 +99,10 @@ public class PlayingStand {
 
         return true;
     }
-
+    
+    /** checks if one row of four exists**/
     public boolean areFourConnected() {
+        boolean result = false;
         for (int i = 0; i < stand.length; i++) {
             Chip[] column = stand[i];
             for (int j = 0; j < column.length; j++) {
@@ -110,12 +112,13 @@ public class PlayingStand {
                         hasDownwardDiagonalMatch(i, j) ||
                         hasHorizontalMatch(i, j))) {
                     winner = nextCell;
+                    result = true;
                     return true;
                 }
             }
         }
 
-        return false;
+        return result;
     }
 
     private boolean hasHorizontalMatch(int column, int row) {
